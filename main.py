@@ -66,6 +66,7 @@ def main():
 #     schedule.run_pending()
 
 
+
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
