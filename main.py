@@ -60,10 +60,10 @@ def main():
     driver = webdriver.Chrome(options=chrome_options)
 
 
-schedule.every(3).minutes.do(resume_schedule)
-
-while True:
-    schedule.run_pending()
+# schedule.every(3).minutes.do(resume_schedule)
+#
+# while True:
+#     schedule.run_pending()
 
 
 @server.route('/' + TOKEN, methods=['POST'])
