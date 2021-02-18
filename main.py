@@ -48,6 +48,7 @@ def send_welcome(message):
 @bot.message_handler(commands=['res'])
 def send_welcome(message):
     resume_schedule()
+    bot.send_message(message.from_user.id, "Resumes were updated")
 
 def resume_schedule():
     main()
