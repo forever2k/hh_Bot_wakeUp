@@ -3,7 +3,10 @@ from telebot import types
 import os
 from flask import Flask, request
 from config import *
-
+import schedule
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import pickle
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -14,11 +17,16 @@ server = Flask(__name__)
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
 
-# @bot.message_handler(commands=['start', 'help'])
-# def send_welcome(message):
-#     bot.send_message(message.from_user.id, "Привет, мой друг")
-#     bot.send_message(message.from_user.id, text='Ты хочешь оставить свой вопрос?', reply_markup=x_keyboard())
-#
+
+
+def main():
+    global driver
+    chrome_options = Options()
+    chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
+                                'like Gecko) Chrome/85.0.4183.83 Safari/537.36')
+    # chrome_options.add_argument('headless')
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    driver = webdriver.Chrome(options=chrome_options)
 
 
 @server.route('/' + TOKEN, methods=['POST'])
