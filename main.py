@@ -44,6 +44,11 @@ class HHParser:
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
 
+
+@bot.message_handler(commands=['res'])
+def send_welcome(message):
+    resume_schedule()
+
 def resume_schedule():
     main()
     parser = HHParser(driver)
