@@ -12,12 +12,43 @@ bot = telebot.TeleBot(TOKEN)
 
 server = Flask(__name__)
 
+URL = 'https://hh.ru/'
+
+class HHParser:
+
+    def __init__(self, driver):
+        self.driver = driver
+        driver.implicitly_wait(4)
+
+    def resume_wake_up(self):
+        driver.get(URL)
+        # pickle.dump(driver.get_cookies(), open("session", "wb"))
+        # time.sleep(100)
+        # print('save')
+        cookies = pickle.load(open("session", "rb"))
+        for cookie in cookies:
+            driver.add_cookie(cookie)
+        driver.refresh()
+
+        driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link").click()
+
+        resumeUp = driver.find_elements_by_class_name("applicant-resumes-update-button")
+        for resume in resumeUp:
+            try:
+                resume.click()
+            except:
+                pass
+
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
 
-
+def resume_schedule():
+    main()
+    parser = HHParser(driver)
+    parser.resume_wake_up()
+    bot.send_message(-1001364950026, "Resumes were updated")
 
 def main():
     global driver
