@@ -1,1 +1,1 @@
-web: python hh_bot_wakeUp(for_T).py
+web: python main.py
