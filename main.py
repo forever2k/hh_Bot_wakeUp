@@ -60,6 +60,12 @@ def main():
     driver = webdriver.Chrome(options=chrome_options)
 
 
+schedule.every(3).minutes.do(resume_schedule)
+
+while True:
+    schedule.run_pending()
+
+
 @server.route('/' + TOKEN, methods=['POST'])
 def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
