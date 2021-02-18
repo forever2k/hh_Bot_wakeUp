@@ -14,8 +14,6 @@ server = Flask(__name__)
 
 URL = 'https://hh.ru/'
 
-# test gid
-
 class HHParser:
 
     def __init__(self, driver):
