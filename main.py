@@ -47,6 +47,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['res'])
 def send_welcome(message):
+    bot.send_message(message.from_user.id, "RES command starts")
     resume_schedule()
     bot.send_message(message.from_user.id, "Resumes were updated")
 
@@ -59,10 +60,10 @@ def resume_schedule():
 def main():
     global driver
     chrome_options = Options()
-    chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
-                                'like Gecko) Chrome/85.0.4183.83 Safari/537.36')
+    # chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
+    #                             'like Gecko) Chrome/85.0.4183.83 Safari/537.36')
     chrome_options.add_argument('headless')
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    # chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     driver = webdriver.Chrome(options=chrome_options)
 
 
