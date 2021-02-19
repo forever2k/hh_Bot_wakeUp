@@ -31,9 +31,9 @@ def send_welcome(message):
     bot.send_message(message.from_user.id, "RES command starts")
 
     driver.get('https://hh.ru/')
-    print(driver.page_source)
+    print(driver.current_url)
 
-    bot.send_message(message.from_user.id, driver.page_source)
+    bot.send_message(message.from_user.id, driver.current_url)
 
     bot.send_message(message.from_user.id, "RES command finished")
 
