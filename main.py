@@ -22,6 +22,7 @@ class HHParser:
 
     def resume_wake_up(self):
         driver.get(URL)
+        print(driver.page_source)
         # pickle.dump(driver.get_cookies(), open("session", "wb"))
         # time.sleep(100)
         # print('save')
@@ -36,6 +37,7 @@ class HHParser:
         for resume in resumeUp:
             try:
                 resume.click()
+                print('yes click')
             except:
                 pass
 
