@@ -3,6 +3,7 @@ from selenium import webdriver
 import telebot
 from flask import Flask, request
 from config import *
+import pickle
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -33,7 +34,15 @@ def send_welcome(message):
     driver.get('https://hh.ru/')
     print(driver.current_url)
 
+    cookies = pickle.load(open("session", "rb"))
+    for cookie in cookies:
+        driver.add_cookie(cookie)
+    driver.refresh()
+
+    ob = driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
+
     bot.send_message(message.from_user.id, driver.current_url)
+    bot.send_message(message.from_user.id, ob)
 
     bot.send_message(message.from_user.id, "RES command finished")
 
