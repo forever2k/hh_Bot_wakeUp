@@ -39,6 +39,9 @@ def send_welcome(message):
         driver.add_cookie(cookie)
     driver.refresh()
 
+    bot.send_message(message.from_user.id, driver.current_url)
+    bot.send_message(message.from_user.id, 'after cookies')
+
     ob = driver.find_elements_by_class_name("my-events__name")
     ob[0].click()
     bot.send_message(message.from_user.id, driver.current_url)
