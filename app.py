@@ -39,11 +39,17 @@ def send_welcome(message):
         driver.add_cookie(cookie)
     driver.refresh()
 
-    bot.send_message(message.from_user.id, driver.current_url)
-    bot.send_message(message.from_user.id, 'after cookies')
 
-    ob = driver.find_elements_by_class_name("my-events__name")
+    ob = driver.find_elements_by_class_name("HH-Supernova-NaviLevel2-Link")
     ob[0].click()
+
+    ob1 = driver.find_elements_by_class_name('bloko-link_dimmed')
+
+    for i in ob1:
+        if i.text == 'Поднять в поиске':
+            bot.send_message(message.from_user.id, i.text)
+
+
     bot.send_message(message.from_user.id, driver.current_url)
 
     # driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item").click()
