@@ -46,9 +46,9 @@ def send_welcome(message):
     bot.send_message(message.from_user.id, driver.current_url)
 
     bot.send_message(message.from_user.id, 'before cycle')
-    for item in ob:
+    for item in range(0, len(ob)):
         bot.send_message(message.from_user.id, 'Its a cycle')
-        bot.send_message(message.from_user.id, item.text)
+        bot.send_message(message.from_user.id, ob[item].text)
     bot.send_message(message.from_user.id, 'after cycle')
 
     bot.send_message(message.from_user.id, "2 RES command finished")
