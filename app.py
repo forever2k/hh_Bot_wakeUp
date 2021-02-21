@@ -39,7 +39,7 @@ def send_welcome(message):
         driver.add_cookie(cookie)
     driver.refresh()
 
-    driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item")
+    driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item").click()
     bot.send_message(message.from_user.id, driver.current_url)
 
     # driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
