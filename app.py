@@ -39,10 +39,14 @@ def send_welcome(message):
         driver.add_cookie(cookie)
     driver.refresh()
 
-    ob = driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
+    driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
+
+    ob = driver.find_elements_by_class_name('applicant-resumes-update-button')
 
     bot.send_message(message.from_user.id, driver.current_url)
-    bot.send_message(message.from_user.id, ob)
+
+    for item in ob:
+        bot.send_message(message.from_user.id, item.text)
 
     bot.send_message(message.from_user.id, "RES command finished")
 
