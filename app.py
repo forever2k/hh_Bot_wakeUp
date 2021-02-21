@@ -39,19 +39,22 @@ def send_welcome(message):
         driver.add_cookie(cookie)
     driver.refresh()
 
-    driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
-
-    ob = driver.find_elements_by_class_name('applicant-resumes-update-button')
-
+    driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item")
     bot.send_message(message.from_user.id, driver.current_url)
 
-    bot.send_message(message.from_user.id, 'before cycle')
-    for item in range(0, len(ob)):
-        bot.send_message(message.from_user.id, 'Its a cycle')
-        bot.send_message(message.from_user.id, ob[item].text)
-    bot.send_message(message.from_user.id, 'after cycle')
+    # driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
+    #
+    # ob = driver.find_elements_by_class_name('applicant-resumes-update-button')
+    #
+    # bot.send_message(message.from_user.id, driver.current_url)
+    #
+    # bot.send_message(message.from_user.id, 'before cycle')
+    # for item in range(0, len(ob)):
+    #     bot.send_message(message.from_user.id, 'Its a cycle')
+    #     bot.send_message(message.from_user.id, ob[item].text)
+    # bot.send_message(message.from_user.id, 'after cycle')
 
-    bot.send_message(message.from_user.id, "2 RES command finished")
+    bot.send_message(message.from_user.id, "3 RES command finished")
 
 
 
