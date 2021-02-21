@@ -34,13 +34,17 @@ def send_welcome(message):
     driver.get('https://hh.ru/')
     print(driver.current_url)
 
-    cookies = pickle.load(open("session", "rb"))
-    for cookie in cookies:
-        driver.add_cookie(cookie)
-    driver.refresh()
+    # cookies = pickle.load(open("session", "rb"))
+    # for cookie in cookies:
+    #     driver.add_cookie(cookie)
+    # driver.refresh()
 
-    driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item").click()
+    ob = driver.find_elements_by_class_name("HH-Supernova-NaviLevel1-Item")
+    ob[0].click()
     bot.send_message(message.from_user.id, driver.current_url)
+
+    # driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item").click()
+    # bot.send_message(message.from_user.id, driver.current_url)
 
     # driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
     #
@@ -54,7 +58,7 @@ def send_welcome(message):
     #     bot.send_message(message.from_user.id, ob[item].text)
     # bot.send_message(message.from_user.id, 'after cycle')
 
-    bot.send_message(message.from_user.id, "3 RES command finished")
+    bot.send_message(message.from_user.id, "4 RES command finished")
 
 
 
