@@ -6,6 +6,7 @@ from config import *
 import pickle
 import schedule
 import time
+import random
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -21,12 +22,9 @@ driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), c
 
 
 URL = 'https://hh.ru/'
-URL2 = 'https://margarinus.su/'
 
-def getpicture():
-    r = requests.get('https://images.unsplash.com/photo-1613219332203-8513309bd7a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
-    url = r.url
-    return url
+page = random.randrange(1, 10)
+URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -54,14 +52,14 @@ def send_girl(message):
     bot.send_message(message.from_user.id, "Send Bot works")
     driver.get(URL2)
 
-    ob = driver.find_elements_by_class_name("post-column")
-    ob[0].click()
+    ob = driver.find_elements_by_class_name("pcsrt-th-pics")
+    ob[1].click()
     r = driver.current_url
     url = r.url
 
-    bot.send_photo(message.from_user.id, photo=r)
     bot.send_photo(message.from_user.id, photo=url)
-    bot.send_photo(message.from_user.id, photo=ob[0])
+    bot.send_photo(message.from_user.id, photo=r)
+    bot.send_photo(message.from_user.id, photo=ob[1])
     bot.send_photo(message.from_user.id, driver.current_url)
 
 
