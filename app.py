@@ -33,6 +33,12 @@ def send_welcome(message):
 
     bot.send_message(message.from_user.id, "RES command starts")
 
+    schedule.every(3).minutes.do(wake_up)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
 
 def wake_up():
     driver.get(URL)
@@ -62,9 +68,9 @@ def wake_up():
 
 # schedule.every(3).minutes.do(wake_up)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)
 
 
 @server.route('/' + TOKEN, methods=['POST'])
