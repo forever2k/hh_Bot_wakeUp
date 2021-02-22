@@ -47,8 +47,12 @@ def send_welcome(message):
 
     for i in ob1:
         if i.text == 'Поднять в поиске':
-            i.click()
-            bot.send_message(message.from_user.id, 'Подняли! :)')
+            try:
+                i.click()
+                bot.send_message(message.from_user.id, 'Подняли! :)')
+            except:
+                pass
+
 
 
     bot.send_message(message.from_user.id, driver.current_url)
