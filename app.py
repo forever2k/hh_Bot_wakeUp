@@ -51,9 +51,7 @@ def send_welcome(message):
                 i.click()
                 bot.send_message(message.from_user.id, 'Подняли! :)')
             except:
-                pass
-
-
+                bot.send_message(message.from_user.id, 'Что то не подняли :(')
 
     bot.send_message(message.from_user.id, driver.current_url)
 
