@@ -60,6 +60,7 @@ def send_girl(message):
     # bot.send_message(message.from_user.id, "Send Bot finished work")
 
     driver.get(URL2)
+    bot.send_photo(227722043, driver.current_url)
 
     ob = driver.find_elements_by_class_name("pcsrt-th-pics")
     ob[1].click()
