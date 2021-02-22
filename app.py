@@ -56,7 +56,7 @@ def send_welcome(message):
 @bot.message_handler(commands=['send'])
 def send_girl(message):
     bot.send_message(message.from_user.id, "Send Bot works")
-    bot.send_photo(message, photo='https://images.unsplash.com/photo-1613219332203-8513309bd7a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
+    bot.send_photo(227722043, photo=getpicture())
     bot.send_message(message.from_user.id, "Send Bot finished work")
 
     # driver.get(URL2)
