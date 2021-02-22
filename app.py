@@ -61,10 +61,10 @@ def wake_up():
 
 
 # schedule.every(3).minutes.do(wake_up)
-#
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 @server.route('/' + TOKEN, methods=['POST'])
