@@ -18,8 +18,8 @@ chrome_options.add_argument('--disable-dev-sh-usage')
 driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
 
 
-# driver.get('https://hh.ru/')
-# print(driver.page_source)
+URL = 'https://hh.ru/'
+
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -31,14 +31,12 @@ def send_welcome(message):
 
     bot.send_message(message.from_user.id, "RES command starts")
 
-    driver.get('https://hh.ru/')
-    print(driver.current_url)
+    driver.get(URL)
 
     cookies = pickle.load(open("session", "rb"))
     for cookie in cookies:
         driver.add_cookie(cookie)
     driver.refresh()
-
 
     ob = driver.find_elements_by_class_name("HH-Supernova-NaviLevel2-Link")
     ob[0].click()
@@ -54,21 +52,6 @@ def send_welcome(message):
                 bot.send_message(message.from_user.id, 'Что то не подняли :(')
 
     bot.send_message(message.from_user.id, driver.current_url)
-
-    # driver.find_element_by_class_name("HH-Supernova-NaviLevel1-Item").click()
-    # bot.send_message(message.from_user.id, driver.current_url)
-
-    # driver.find_element_by_class_name("HH-Supernova-NaviLevel2-Link")
-    #
-    # ob = driver.find_elements_by_class_name('applicant-resumes-update-button')
-    #
-    # bot.send_message(message.from_user.id, driver.current_url)
-    #
-    # bot.send_message(message.from_user.id, 'before cycle')
-    # for item in range(0, len(ob)):
-    #     bot.send_message(message.from_user.id, 'Its a cycle')
-    #     bot.send_message(message.from_user.id, ob[item].text)
-    # bot.send_message(message.from_user.id, 'after cycle')
 
     bot.send_message(message.from_user.id, "4 RES command finished")
 
