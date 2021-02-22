@@ -57,6 +57,8 @@ def send_girl(message):
     r = driver.current_url
     url = r.url
 
+    bot.send_photo(message.from_user.id, 'here')
+    bot.send_photo(message.from_user.id, driver.current_url)
     bot.send_photo(message.from_user.id, photo=url)
     bot.send_photo(message.from_user.id, photo=r)
     bot.send_photo(message.from_user.id, photo=ob[1])
