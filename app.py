@@ -21,6 +21,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), c
 
 
 URL = 'https://hh.ru/'
+URL2 = 'https://margarinus.su/'
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -41,6 +42,18 @@ def send_welcome(message):
         time.sleep(1)
 
     bot.send_message(message.from_user.id, "Its END of RES")
+
+
+@bot.message_handler(commands=['send'])
+def send_girl(message):
+    bot.send_message(message.from_user.id, "Send Bot works")
+    driver.get(URL2)
+
+    ob = driver.find_elements_by_class_name("post-column")
+
+    bot.send_photo(message.from_user.id, photo=ob[0])
+
+
 
 def wake_up():
 
