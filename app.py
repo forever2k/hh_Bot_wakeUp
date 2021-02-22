@@ -57,6 +57,8 @@ def send_welcome(message):
 def send_girl(message):
     bot.send_message(message.from_user.id, "Send Bot works")
     bot.send_photo(message, photo=getpicture())
+    bot.send_message(message.from_user.id, "Send Bot finished work")
+
     # driver.get(URL2)
     #
     # ob = driver.find_elements_by_class_name("pcsrt-th-pics")
