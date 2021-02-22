@@ -7,6 +7,7 @@ import pickle
 import schedule
 import time
 import random
+import requests
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -26,6 +27,11 @@ URL = 'https://hh.ru/'
 page = random.randrange(1, 10)
 URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
 
+
+def getpicture():
+    r = requests.get('https://images.unsplash.com/photo-1613219332203-8513309bd7a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
+    url = r.url
+    return url
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -50,19 +56,20 @@ def send_welcome(message):
 @bot.message_handler(commands=['send'])
 def send_girl(message):
     bot.send_message(message.from_user.id, "Send Bot works")
-    driver.get(URL2)
-
-    ob = driver.find_elements_by_class_name("pcsrt-th-pics")
-    ob[1].click()
-    r = driver.current_url
-    url = r.url
-
-    bot.send_photo(message.from_user.id, 'here')
-    bot.send_photo(message.from_user.id, driver.current_url)
-    bot.send_photo(message.from_user.id, photo=url)
-    bot.send_photo(message.from_user.id, photo=r)
-    bot.send_photo(message.from_user.id, photo=ob[1])
-    bot.send_photo(message.from_user.id, driver.current_url)
+    bot.send_photo(message, photo=getpicture())
+    # driver.get(URL2)
+    #
+    # ob = driver.find_elements_by_class_name("pcsrt-th-pics")
+    # ob[1].click()
+    # r = driver.current_url
+    # url = r.url
+    #
+    # bot.send_photo(message.from_user.id, 'here')
+    # bot.send_photo(message.from_user.id, driver.current_url)
+    # bot.send_photo(message.from_user.id, photo=url)
+    # bot.send_photo(message.from_user.id, photo=r)
+    # bot.send_photo(message.from_user.id, photo=ob[1])
+    # bot.send_photo(message.from_user.id, driver.current_url)
 
 
 
