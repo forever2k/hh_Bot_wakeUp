@@ -38,6 +38,7 @@ def send_welcome(message):
 
     while True:
         schedule.run_pending()
+        time.sleep(1)
 
 def wake_up():
     driver.get(URL)
