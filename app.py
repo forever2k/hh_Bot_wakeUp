@@ -4,6 +4,8 @@ import telebot
 from flask import Flask, request
 from config import *
 import pickle
+import schedule
+import time
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -31,6 +33,8 @@ def send_welcome(message):
 
     bot.send_message(message.from_user.id, "RES command starts")
 
+
+def wake_up():
     driver.get(URL)
 
     cookies = pickle.load(open("session", "rb"))
@@ -47,14 +51,20 @@ def send_welcome(message):
         if i.text == 'Поднять в поиске':
             try:
                 i.click()
-                bot.send_message(message.from_user.id, 'Подняли! :)')
+                bot.send_message(-1001364950026, 'Подняли! :)')
             except:
-                bot.send_message(message.from_user.id, 'Что то не подняли :(')
+                bot.send_message(-1001364950026, 'Что то не подняли :(')
 
-    bot.send_message(message.from_user.id, driver.current_url)
+    bot.send_message(-1001364950026, driver.current_url)
 
-    bot.send_message(message.from_user.id, "4 RES command finished")
+    bot.send_message(-1001364950026, "Updated finished")
 
+
+schedule.every(3).minutes.do(wake_up)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 @server.route('/' + TOKEN, methods=['POST'])
