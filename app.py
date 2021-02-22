@@ -40,7 +40,11 @@ def send_welcome(message):
         schedule.run_pending()
         time.sleep(1)
 
+    bot.send_message(message.from_user.id, "Its END of RES")
+
 def wake_up():
+
+    bot.send_message(227722043, "Function Wake_up starts")
     driver.get(URL)
 
     cookies = pickle.load(open("session", "rb"))
@@ -63,7 +67,7 @@ def wake_up():
 
     bot.send_message(-1001364950026, driver.current_url)
 
-    bot.send_message(-1001364950026, "Updated finished")
+    bot.send_message(227722043, "Function Wake_up finished")
 
 
 # schedule.every(3).minutes.do(wake_up)
