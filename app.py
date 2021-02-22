@@ -26,6 +26,7 @@ URL = 'https://hh.ru/'
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
+    bot.send_message(message.from_user.id, message.from_user.id)
 
 
 @bot.message_handler(commands=['res'])
@@ -33,12 +34,10 @@ def send_welcome(message):
 
     bot.send_message(message.from_user.id, "RES command starts")
 
-    schedule.every(3).minutes.do(wake_up)
+    schedule.every(1).minutes.do(wake_up)
 
     while True:
         schedule.run_pending()
-        time.sleep(1)
-
 
 def wake_up():
     driver.get(URL)
