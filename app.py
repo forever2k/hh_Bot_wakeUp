@@ -24,9 +24,6 @@ driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), c
 
 URL = 'https://hh.ru/'
 
-page = random.randrange(1, 10)
-URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
-
 
 def getpicture():
     r = requests.get('https://images.unsplash.com/photo-1613219332203-8513309bd7a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
@@ -60,13 +57,17 @@ def send_girl(message):
     # bot.send_photo(227722043, photo=getpicture())
     # bot.send_message(message.from_user.id, "Send Bot finished work")
 
+    page = random.randrange(1, 10)
+    URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
+
     driver.get(URL2)
     bot.send_message(227722043, 'here 0')
 
     ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
     r = ob[1].get_attribute('href')
-
     bot.send_message(227722043, r)
+
+    driver.get(r)
 
     ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
     bot.send_message(227722043, 'here 1')
@@ -74,9 +75,10 @@ def send_girl(message):
 
     bot.send_message(227722043, 'here 2')
     all_windows = driver.window_handles
+    bot.send_message(227722043, all_windows)
 
-    driver.switch_to.window(all_windows[-1])
-    bot.send_message(227722043, driver.current_url)
+    # driver.switch_to.window(all_windows[-1])
+    # bot.send_message(227722043, driver.current_url)
 
 
 
