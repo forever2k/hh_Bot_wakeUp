@@ -60,22 +60,26 @@ def send_girl(message):
     # bot.send_message(message.from_user.id, "Send Bot finished work")
 
     driver.get(URL2)
-    bot.send_photo(227722043, driver.current_url)
+    bot.send_message(227722043, 'here 0')
 
     ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
-    ob[1].click()
-    r = driver.current_url
-    url = r.url
 
-    bot.send_photo(227722043, 'here')
-    bot.send_photo(227722043, driver.current_url)
-    bot.send_photo(227722043, 'here 1')
-    bot.send_photo(227722043, photo=url)
-    bot.send_photo(227722043, 'here 2')
-    bot.send_photo(227722043, photo=r)
-    bot.send_photo(227722043, 'here 3')
-    bot.send_photo(227722043, photo=ob[1])
-    bot.send_photo(227722043, 'here all')
+    bot.send_message(227722043, driver.current_url)
+    bot.send_message(227722043, ob[1])
+
+    # ob[1].click()
+    # r = driver.current_url
+    # url = r.url
+    #
+    # bot.send_photo(227722043, 'here')
+    # bot.send_photo(227722043, driver.current_url)
+    # bot.send_photo(227722043, 'here 1')
+    # bot.send_photo(227722043, photo=url)
+    # bot.send_photo(227722043, 'here 2')
+    # bot.send_photo(227722043, photo=r)
+    # bot.send_photo(227722043, 'here 3')
+    # bot.send_photo(227722043, photo=ob[1])
+    # bot.send_photo(227722043, 'here all')
 
 
 
