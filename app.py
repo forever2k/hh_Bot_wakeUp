@@ -66,7 +66,10 @@ def send_girl(message):
     ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
     driver.get(ob[1].get_attribute('href'))
     ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
+    bot.send_message(227722043, 'here 1')
     ob1[0].click()
+
+    bot.send_message(227722043, 'here 2')
     all_windows = driver.window_handles
 
     driver.switch_to.window(all_windows[-1])
