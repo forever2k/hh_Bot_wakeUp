@@ -64,8 +64,12 @@ def send_girl(message):
     bot.send_message(227722043, 'here 0')
 
     ob = driver.find_element_by_xpath('//*[@id="pcsrt-js-lightgallery"]/div[2]/div/a/img')
-    bot.send_photo(227722043, photo=ob)
-    bot.send_message(227722043, 'here 1')
+    ob.click()
+
+    ob1 = driver.find_element_by_class_name("lg-image")
+    r = ob1.get_attribute('src')
+    bot.send_photo(227722043, photo=r)
+
 
     # ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
     # r = ob[1].get_attribute('href')
