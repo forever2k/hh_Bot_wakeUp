@@ -63,12 +63,21 @@ def send_girl(message):
     driver.get(URL2)
     bot.send_message(227722043, 'here 0')
 
-    ob = driver.find_element_by_xpath('//*[@id="pcsrt-js-lightgallery"]/div[2]/div/a/img')
-    ob.click()
+    path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
 
-    ob1 = driver.find_element_by_class_name("lg-image")
-    r = ob1.get_attribute('src')
-    bot.send_photo(227722043, photo=r)
+    all_pict = len(path_to_pict)
+    pict_random = random.randrange(0, all_pict)
+
+    pict = path_to_pict[pict_random].get_attribute('data-src')
+    bot.send_photo(227722043, photo=pict)
+
+
+    # ob = driver.find_element_by_xpath('//*[@id="pcsrt-js-lightgallery"]/div[2]/div/a/img')
+    # ob.click()
+    #
+    # ob1 = driver.find_element_by_class_name("lg-image")
+    # r = ob1.get_attribute('src')
+    # bot.send_photo(227722043, photo=r)
 
 
     # ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
