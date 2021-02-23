@@ -76,9 +76,11 @@ def send_girl(message):
     bot.send_message(227722043, 'here 2')
     all_windows = driver.window_handles
     bot.send_message(227722043, all_windows)
+    bot.send_message(227722043, len(all_windows))
 
-    # driver.switch_to.window(all_windows[-1])
-    # bot.send_message(227722043, driver.current_url)
+
+    driver.switch_to.window(all_windows[-1])
+    bot.send_message(227722043, driver.current_url)
 
 
 
