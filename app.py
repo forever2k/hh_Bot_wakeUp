@@ -66,10 +66,10 @@ def send_girl(message):
 
     # bot.send_message(227722043, driver.current_url)
     # bot.send_message(227722043, ob[1])
-    bot.send_message(227722043, ob[1].get_attribute('src'))
-
-    bot.send_message(227722043, 'here 1')
-    bot.send_message(227722043, ob[1].get_attribute('href'))
+    # bot.send_message(227722043, ob[1].get_attribute('src'))
+    #
+    # bot.send_message(227722043, 'here 1')
+    bot.send_photo(227722043, photo=ob[1].get_attribute('href'))
     bot.send_message(227722043, 'here 2')
 
 
