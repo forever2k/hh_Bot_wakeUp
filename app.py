@@ -33,6 +33,7 @@ def getpicture():
     url = r.url
     return url
 
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
@@ -63,20 +64,29 @@ def send_girl(message):
     bot.send_message(227722043, 'here 0')
 
     ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
+    driver.get(ob[1].get_attribute('href'))
+    ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
+    ob1[0].click()
+    all_windows = driver.window_handles
+
+    driver.switch_to.window(all_windows[-1])
+    bot.send_message(227722043, driver.current_url)
+
+
 
     # bot.send_photo(227722043, photo='https://cdn.xxx.pics/QFjfZk4lob4aVw8Cew%3D%3D/0.jpg')
 
-    driver.get(ob[1].get_attribute('href'))
-
-    bot.send_message(227722043, driver.current_url)
-
-    bot.send_message(227722043, 'here 11')
-    ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
-
-    bot.send_message(227722043, 'here 1')
-
-    driver.get(ob1[0].get_attribute('href'))
-    bot.send_message(227722043, driver.current_url)
+    # driver.get(ob[1].get_attribute('href'))
+    #
+    # bot.send_message(227722043, driver.current_url)
+    #
+    # bot.send_message(227722043, 'here 11')
+    # ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
+    #
+    # bot.send_message(227722043, 'here 1')
+    #
+    # driver.get(ob1[0].get_attribute('href'))
+    # bot.send_message(227722043, driver.current_url)
 
 
 
