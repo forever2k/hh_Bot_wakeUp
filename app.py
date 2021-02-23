@@ -63,19 +63,23 @@ def send_girl(message):
     driver.get(URL2)
     bot.send_message(227722043, 'here 0')
 
-    ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
-    r = ob[1].get_attribute('href')
-    bot.send_message(227722043, r)
-
-    driver.get(r)
-
-    ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
+    ob = driver.find_element_by_xpath('//*[@id="pcsrt-js-lightgallery"]/div[2]/div/a/img')
+    bot.send_photo(227722043, photo=ob)
     bot.send_message(227722043, 'here 1')
-    ob1[0].click()
 
-    bot.send_message(227722043, 'here 2')
-    all_windows = driver.window_handles
-    bot.send_message(227722043, all_windows)
+    # ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
+    # r = ob[1].get_attribute('href')
+    # bot.send_message(227722043, r)
+    #
+    # driver.get(r)
+    #
+    # ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
+    # bot.send_message(227722043, 'here 1')
+    # ob1[0].click()
+    #
+    # bot.send_message(227722043, 'here 2')
+    # all_windows = driver.window_handles
+    # bot.send_message(227722043, all_windows)
     # bot.send_message(227722043, len(all_windows))
     #
     #
