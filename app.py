@@ -64,7 +64,7 @@ def send_girl(message):
     bot.send_message(227722043, 'here 0')
 
     ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
-    r = driver.get(ob[1].get_attribute('href'))
+    r = ob[1].get_attribute('href')
 
     bot.send_message(227722043, r)
 
