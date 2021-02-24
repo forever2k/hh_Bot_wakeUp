@@ -21,14 +21,9 @@ chrome_options.add_argument('--disable-dev-sh-usage')
 
 driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
 
-
 URL = 'https://hh.ru/'
 
 
-def getpicture():
-    r = requests.get('https://images.unsplash.com/photo-1613219332203-8513309bd7a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
-    url = r.url
-    return url
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -54,11 +49,36 @@ def send_welcome(message):
 @bot.message_handler(commands=['send'])
 def send_girl(message):
     bot.send_message(message.from_user.id, "Send Bot works")
-    # bot.send_photo(227722043, photo=getpicture())
-    # bot.send_message(message.from_user.id, "Send Bot finished work")
+    schedule.every(90).minutes.do(girl)
 
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+    bot.send_message(message.from_user.id, "Its END of Send")
+
+
+def girl():
     page = random.randrange(1, 10)
     URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
+    guys = ['парни', 'ребятушки', 'братушки', 'ребятки', 'мужики', 'перцы']
+    greeting = ['здарова', 'хая', 'салам', 'салют', 'здравствуйте', 'шалом', 'бонжур', 'хэллоу', 'хей', 'буэнос диас',
+                'хола', 'доброго дня', 'добрый день', 'ассалам алейкум']
+    phrases = ['как вам мои чики?', 'попробуйте меня', 'какая я вкусненькая', 'смотрите на мои вишенки',
+               'как вам мои изюминки?', 'я вся горю', 'початимся?', 'пообщаемся?',
+               'ох, не смотри на меня так', 'мои булочки готовы для вас', 'рада тут побывать',
+               'всегда готова, жду вас тут', 'порадуйте меня чем нибудь', 'я секси, да?', 'я конфетка, да?',
+               'сейчас позову подружек не хуже меня', 'сегодня здесь будет жарко', 'я вся горю',
+               'классный денек сегодня, да?', 'погодка не фонтан, согрейте меня', 'всем хорошего дня!',
+               'всем классного дня!', 'заходите поглядеть на меня еще', 'хватит палитьтся на мои титьки']
+    emoji = ['$)', ':)', ';)', 'oO', ':**', ' ', '..']
+
+    guys_random = random.randrange(0, len(guys))
+    greeting_random = random.randrange(0, len(greeting))
+    phrases_random = random.randrange(0, len(phrases))
+    emoji_random = random.randrange(0, len(emoji))
+
+    willing_phrase = f'{guys[guys_random].capitalize()} {greeting[greeting_random]}! {phrases[phrases_random].capitalize()} {emoji[emoji_random]}'
 
     driver.get(URL2)
     bot.send_message(227722043, 'here 0')
@@ -70,77 +90,7 @@ def send_girl(message):
 
     pict = path_to_pict[pict_random].get_attribute('data-src')
     bot.send_photo(227722043, photo=pict)
-
-
-    # ob = driver.find_element_by_xpath('//*[@id="pcsrt-js-lightgallery"]/div[2]/div/a/img')
-    # ob.click()
-    #
-    # ob1 = driver.find_element_by_class_name("lg-image")
-    # r = ob1.get_attribute('src')
-    # bot.send_photo(227722043, photo=r)
-
-
-    # ob = driver.find_elements_by_class_name("pcsrt-th-image--link")
-    # r = ob[1].get_attribute('href')
-    # bot.send_message(227722043, r)
-    #
-    # driver.get(r)
-    #
-    # ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
-    # bot.send_message(227722043, 'here 1')
-    # ob1[0].click()
-    #
-    # bot.send_message(227722043, 'here 2')
-    # all_windows = driver.window_handles
-    # bot.send_message(227722043, all_windows)
-    # bot.send_message(227722043, len(all_windows))
-    #
-    #
-    # driver.switch_to.window(all_windows[-1])
-    # bot.send_message(227722043, driver.current_url)
-
-
-
-    # bot.send_photo(227722043, photo='https://cdn.xxx.pics/QFjfZk4lob4aVw8Cew%3D%3D/0.jpg')
-
-    # driver.get(ob[1].get_attribute('href'))
-    #
-    # bot.send_message(227722043, driver.current_url)
-    #
-    # bot.send_message(227722043, 'here 11')
-    # ob1 = driver.find_elements_by_class_name("pcsrt-th-image")
-    #
-    # bot.send_message(227722043, 'here 1')
-    #
-    # driver.get(ob1[0].get_attribute('href'))
-    # bot.send_message(227722043, driver.current_url)
-
-
-
-    # bot.send_message(227722043, driver.current_url)
-    # bot.send_message(227722043, ob[1])
-    # bot.send_message(227722043, ob[1].get_attribute('src'))
-    #
-    # bot.send_message(227722043, 'here 1')
-    # bot.send_photo(227722043, photo=ob1[0].get_attribute('href'))
-    # bot.send_message(227722043, 'here 2')
-
-
-
-    # ob[1].click()
-    # r = driver.current_url
-    # url = r.url
-    #
-    # bot.send_photo(227722043, 'here')
-    # bot.send_photo(227722043, driver.current_url)
-    # bot.send_photo(227722043, 'here 1')
-    # bot.send_photo(227722043, photo=url)
-    # bot.send_photo(227722043, 'here 2')
-    # bot.send_photo(227722043, photo=r)
-    # bot.send_photo(227722043, 'here 3')
-    # bot.send_photo(227722043, photo=ob[1])
-    # bot.send_photo(227722043, 'here all')
-
+    bot.send_message(-1001364950026, willing_phrase)
 
 
 def wake_up():
