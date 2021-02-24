@@ -90,7 +90,7 @@ def girl():
 
     pict = path_to_pict[pict_random].get_attribute('data-src')
     bot.send_photo(227722043, photo=pict)
-    bot.send_message(-1001364950026, willing_phrase)
+    bot.send_message(227722043, willing_phrase)
 
 
 def wake_up():
