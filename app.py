@@ -55,7 +55,7 @@ def send_girl(message):
 
     while True:
         schedule.run_pending()
-        time.sleep(0.5)
+        time.sleep(1)
 
     # bot.send_message(message.from_user.id, "Its END of Send")
 
