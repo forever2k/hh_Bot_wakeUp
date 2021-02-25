@@ -50,13 +50,12 @@ def send_welcome(message):
 def send_girl(message):
 
     bot.send_message(message.from_user.id, "Send Bot works")
-    girl()
 
-    # schedule.every(90).minutes.do(girl)
-    #
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
+    schedule.every(90).minutes.do(girl())
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
     bot.send_message(message.from_user.id, "Its END of Send")
 
