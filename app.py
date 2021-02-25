@@ -51,7 +51,7 @@ def send_girl(message):
 
     bot.send_message(message.from_user.id, "Send Bot works")
 
-    schedule.every(90).minutes.do(girl())
+    schedule.every(3).minutes.do(girl())
 
     while True:
         schedule.run_pending()
@@ -85,21 +85,24 @@ def girl():
     driver.get(URL2)
     bot.send_message(227722043, 'here 0')
 
-    path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
+    try:
+        path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
 
-    bot.send_message(227722043, 'here 1')
+        bot.send_message(227722043, 'here 1')
 
-    all_pict = len(path_to_pict)
-    pict_random = random.randrange(0, all_pict)
+        all_pict = len(path_to_pict)
+        pict_random = random.randrange(0, all_pict)
 
-    bot.send_message(227722043, 'here 2')
+        bot.send_message(227722043, 'here 2')
 
-    pict = path_to_pict[pict_random].get_attribute('data-src')
+        pict = path_to_pict[pict_random].get_attribute('data-src')
 
-    bot.send_message(227722043, 'here 3')
+        bot.send_message(227722043, 'here 3')
 
-    bot.send_photo(227722043, photo=pict)
-    bot.send_message(227722043, willing_phrase)
+        bot.send_photo(227722043, photo=pict)
+        bot.send_message(227722043, willing_phrase)
+    except:
+        bot.send_message(227722043, 'There is a mistake')
 
 
 def wake_up():
