@@ -92,7 +92,12 @@ def girl():
     all_pict = len(path_to_pict)
     pict_random = random.randrange(0, all_pict)
 
+    bot.send_message(227722043, 'here 2')
+
     pict = path_to_pict[pict_random].get_attribute('data-src')
+
+    bot.send_message(227722043, 'here 3')
+
     bot.send_photo(227722043, photo=pict)
     bot.send_message(227722043, willing_phrase)
 
