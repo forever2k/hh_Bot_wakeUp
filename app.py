@@ -101,8 +101,9 @@ def girl():
 
         bot.send_photo(227722043, photo=pict)
         bot.send_message(227722043, willing_phrase)
-    except:
-        bot.send_message(227722043, 'There is a mistake')
+
+    except Exception as error:
+        bot.send_message(227722043, error)
 
 
 def wake_up():
