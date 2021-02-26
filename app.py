@@ -62,6 +62,7 @@ def send_girl(message):
 
 
 def girl():
+    bot.send_message(227722043, 'here 00')
     page = random.randrange(1, 10)
     URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
     guys = ['парни', 'ребятушки', 'братушки', 'ребятки', 'мужики', 'перцы', 'эксперты', 'экспертное сообщество', 'мои герои', 'сладкие мои', 'chicos', 'sexo masculino']
