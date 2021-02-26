@@ -47,22 +47,6 @@ def send_welcome(message):
     bot.send_message(message.from_user.id, "Its END of RES")
 
 
-@bot.message_handler(commands=['send'])
-def send_girl(message):
-
-    bot.send_message(message.from_user.id, "Send Bot works")
-
-    asyncio.run(girl_asyncio())
-    # schedule.every(2).minutes.do(girl)
-    #
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
-
-
-    # bot.send_message(message.from_user.id, "Its END of Send")
-
-
 async def girl_asyncio():
 
     while True:
@@ -115,7 +99,27 @@ async def girl_asyncio():
         except Exception as error:
             bot.send_message(227722043, error)
 
-        await asyncio.sleep(60)
+        await asyncio.sleep(1)
+
+
+
+@bot.message_handler(commands=['send'])
+def send_girl(message):
+
+    bot.send_message(message.from_user.id, "Send Bot asyncio works")
+
+    asyncio.run(girl_asyncio())
+    # schedule.every(2).minutes.do(girl)
+    #
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)
+
+
+    # bot.send_message(message.from_user.id, "Its END of Send")
+
+
+
 
 
 def girl():
