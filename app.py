@@ -55,7 +55,7 @@ def send_girl(message):
 
     while True:
         schedule.run_pending()
-        time.sleep(60)
+        time.sleep(1)
 
     schedule.every(60).minutes.do(girl)
 
