@@ -51,7 +51,7 @@ def send_girl(message):
 
     bot.send_message(message.from_user.id, "Send Bot works")
 
-    schedule.every(2).minutes.do(girl())
+    schedule.every(2).minutes.do(girl)
 
     while True:
         schedule.run_pending()
@@ -67,7 +67,7 @@ def girl():
     URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
     guys = ['парни', 'ребятушки', 'братушки', 'ребятки', 'мужики', 'перцы', 'эксперты', 'экспертное сообщество', 'мои герои', 'сладкие мои', 'chicos', 'sexo masculino']
     greeting = ['здарова', 'хая', 'салам', 'салют', 'здравствуйте', 'шалом', 'бонжур', 'хэллоу', 'хей', 'буэнос диас',
-                'хола', 'доброго дня', 'добрый день', 'ассалам алейкум', 'Hola', 'Prosperadlo', 'Hola mis queridos']
+                'хола', 'доброго дня', 'добрый день', 'ассалам алейкум', 'hola', 'prosperadlo', 'hola mis queridos']
     phrases = ['как вам мои чики?', 'попробуйте меня', 'какая я вкусненькая', 'смотрите на мои вишенки',
                'как вам мои изюминки?', 'я вся горю', 'початимся?', 'пообщаемся?',
                'ох, не смотри на меня так', 'мои булочки готовы для вас', 'рада тут побывать',
