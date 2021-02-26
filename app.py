@@ -23,6 +23,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), c
 
 URL = 'https://hh.ru/'
 
+launch = True
 
 
 @bot.message_handler(commands=['start', 'help'])
@@ -45,6 +46,18 @@ def send_welcome(message):
     bot.send_message(message.from_user.id, "Its END of RES")
 
 
+@bot.message_handler(commands=['stop'])
+def stop_send_girl(message):
+
+    stop_girl()
+    bot.send_message(message.from_user.id, "Send girl Bot finished work")
+
+
+def stop_girl():
+
+    global launch
+    launch = False
+
 
 @bot.message_handler(commands=['send'])
 def send_girl(message):
@@ -53,10 +66,9 @@ def send_girl(message):
 
     schedule.every(2).minutes.do(girl)
 
-    while True:
+    while launch:
         schedule.run_pending()
         time.sleep(1)
-
 
 
 def girl():
