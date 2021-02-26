@@ -51,10 +51,6 @@ def send_girl(message):
 
     bot.send_message(message.from_user.id, "Send Bot works")
 
-    # girl()
-    #
-    # bot.send_message(227722043, 'next')
-
     schedule.every(2).minutes.do(girl)
 
     while True:
@@ -62,13 +58,9 @@ def send_girl(message):
         time.sleep(1)
 
 
-    # bot.send_message(message.from_user.id, "Its END of Send")
-
-
 
 def girl():
 
-    bot.send_message(227722043, 'here 00')
     page = random.randrange(1, 10)
     URL2 = 'https://xxx.pics/category/cute/' + str(page) + '/'
     guys = ['парни', 'ребятушки', 'братушки', 'ребятки', 'мужики', 'перцы', 'эксперты', 'экспертное сообщество', 'мои герои', 'сладкие мои', 'chicos', 'sexo masculino']
@@ -91,7 +83,6 @@ def girl():
     willing_phrase = f'{guys[guys_random].capitalize()} {greeting[greeting_random]}! {phrases[phrases_random].capitalize()} {emoji[emoji_random]}'
 
     driver.get(URL2)
-    bot.send_message(227722043, URL2)
 
     try:
         path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
