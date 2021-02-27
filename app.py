@@ -26,11 +26,11 @@ URL = 'https://hh.ru/'
 launch = True
 
 
-@bot.message_handler(content_types=['text'])
-def lalala(message):
-    bot.send_message(227722043, message)
-    bot.send_message(227722043, message.message_id)
-    bot.send_message(227722043, message.chat.id)
+# @bot.message_handler(content_types=['text'])
+# def lalala(message):
+#     bot.send_message(227722043, message)
+#     bot.send_message(227722043, message.message_id)
+#     bot.send_message(227722043, message.chat.id)
 
 
 
