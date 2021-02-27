@@ -117,16 +117,23 @@ def girl():
 
     try:
         path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
+    except Exception as error:
+        bot.send_message(227722043, 'Item 1 not found')
+        bot.send_message(227722043, error)
 
+    try:
         all_pict = len(path_to_pict)
         pict_random = random.randrange(0, all_pict)
-
         pict = path_to_pict[pict_random].get_attribute('data-src')
+    except Exception as error:
+        bot.send_message(227722043, 'Item 2 not found')
+        bot.send_message(227722043, error)
 
+    try:
         bot.send_photo(227722043, photo=pict)
         bot.send_message(227722043, willing_phrase)
-
     except Exception as error:
+        bot.send_message(227722043, 'Final error')
         bot.send_message(227722043, error)
 
 
