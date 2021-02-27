@@ -2,6 +2,9 @@ import os
 from selenium import webdriver
 import telebot
 from flask import Flask, request
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 from config import *
 import pickle
 import schedule
@@ -20,6 +23,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-sh-usage')
 
 driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
+driver.implicitly_wait(4)
 
 URL = 'https://hh.ru/'
 
@@ -114,9 +118,10 @@ def girl():
     willing_phrase = f'{guys[guys_random].capitalize()} {greeting[greeting_random]}! {phrases[phrases_random].capitalize()} {emoji[emoji_random]}'
 
     driver.get(URL2)
+    wait1 = WebDriverWait(driver, 10)
 
     try:
-        path_to_pict = driver.find_elements_by_class_name('pcsrt-th-lightgallery-item')
+        path_to_pict = wait1.until(expected_conditions.visibility_of_all_elements_located((By.CLASS_NAME, 'pcsrt-th-lightgallery-item')))
     except Exception as error:
         bot.send_message(227722043, 'Item 1 not found')
         bot.send_message(227722043, error)
@@ -124,6 +129,7 @@ def girl():
     try:
         all_pict = len(path_to_pict)
         pict_random = random.randrange(0, all_pict)
+        time.sleep(2)
         pict = path_to_pict[pict_random].get_attribute('data-src')
     except Exception as error:
         bot.send_message(227722043, 'Item 2 not found')
