@@ -26,6 +26,14 @@ URL = 'https://hh.ru/'
 launch = True
 
 
+@bot.message_handler(content_types=['text'])
+def lalala(message):
+    bot.send_message(227722043, message)
+    bot.send_message(227722043, message.message_id)
+    bot.send_message(227722043, message.chat.id)
+
+
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.send_message(message.from_user.id, "Bot works")
@@ -58,11 +66,20 @@ def stop_girl():
     global launch
     launch = False
 
+def start_girl():
+
+    global launch
+    launch = True
+
 
 @bot.message_handler(commands=['send'])
 def send_girl(message):
 
     bot.send_message(message.from_user.id, "Send Bot works")
+
+    start_girl()
+    bot.send_message(message.from_user.id, "Start Bot is activated")
+
 
     schedule.every(2).minutes.do(girl)
 
