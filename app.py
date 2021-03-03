@@ -40,7 +40,7 @@ launch = True
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.send_message(message.from_user.id, "Bot works")
+    bot.send_message(message.from_user.id, "Bot hh_wakeUp works")
     bot.send_message(message.from_user.id, message.from_user.id)
 
 
