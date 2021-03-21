@@ -79,7 +79,9 @@ def wake_up():
     bot.send_message(227722043, "Function Wake_up starts")
     driver.get(URL)
 
-    hh_add = os.getenv('hh')
+    # hh_add = os.getenv('hh')
+    hh_add =os.environ.get('hh')
+    bot.send_message(227722043, "here 1")
     # hh1 = hh.copy()
 
     time.sleep(1)
