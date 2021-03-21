@@ -81,11 +81,13 @@ def wake_up():
 
     # hh_add = os.getenv('hh')
     hh_add =os.environ.get('hh')
+    hh_add22 = os.environ.get('hh22')
     bot.send_message(227722043, "here 1")
     # hh1 = hh.copy()
 
     time.sleep(1)
 
+    bot.send_message(227722043, hh_add22)
     bot.send_message(227722043, hh_add)
 
 
