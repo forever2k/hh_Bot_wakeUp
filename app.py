@@ -85,8 +85,17 @@ def wake_up():
     hh_add33 = os.environ.get('hh33')
     # hh1 = hh.copy()
 
+    tmp = []
+
+    for i in hh_add33:
+        tmp.append(i)
+
+    bot.send_message(227722043, tmp)
     bot.send_message(227722043, len(hh_add33))
     bot.send_message(227722043, len(hh_add))
+
+    for i in tmp:
+        bot.send_message(227722043, i)
 
     time.sleep(1)
     #
