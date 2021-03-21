@@ -79,6 +79,12 @@ def wake_up():
     bot.send_message(227722043, "Function Wake_up starts")
     driver.get(URL)
 
+    hh1 = hh.copy()
+
+    time.sleep(1)
+
+    bot.send_message(227722043, hh1)
+
     for cook in hh:
         driver.add_cookie(cook)
 
