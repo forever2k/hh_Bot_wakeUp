@@ -11,6 +11,7 @@ import schedule
 import time
 import random
 import requests
+import ast
 
 
 bot = telebot.TeleBot(TOKEN)
@@ -79,51 +80,15 @@ def wake_up():
     bot.send_message(227722043, "Function Wake_up starts")
     driver.get(URL)
 
-    # hh_add = os.getenv('hh')
-    # hh_add = os.environ.get('hh')
-    # hh_add22 = os.environ.get('hh22')
-    hh_add33 = os.environ.get('hh33')
-    # hh1 = hh.copy()
+    hh_add = os.environ.get('hh')
 
-    tmp = []
-
-    tmp.append(hh_add33)
-
-    k = [{'domain': '.hh.ru', 'expiry': 1647877120, 'httpOnly': False, 'name': 'fgsscgib-w-hh', 'path': '/',
-          'secure': False, 'value': '55bd0350009de2997789d8842fbb8cfbd41e135e'},
-         {'domainmmmm':'.hh.ru', 'expiry': 1647877120, 'httpOnly': False, 'name': 'cfidsgib-w-hh', 'path': '/',
-          'secure': False, 'path': '/', 'secure': False,
-          'value': 'GS1.1.cd9ce979a783e7121286a205683e98cd13f7975ea401e631792ea5a321d4f2e3.1.1.1616341042.24'}]
-
-    bot.send_message(227722043, len(k))
-    for i in k:
-        bot.send_message(227722043, i)
-
-    bot.send_message(227722043, '=====================================')
-    bot.send_message(227722043, len(tmp))
-
-    for i in tmp:
-        bot.send_message(227722043, i)
-
-    bot.send_message(227722043, len(hh_add33))
-    # bot.send_message(227722043, tmp)
-
-    # bot.send_message(227722043, len(hh_add))
-
-    # for i in tmp:
-    #     bot.send_message(227722043, i)
-
-    time.sleep(1)
-    #
-    # bot.send_message(227722043, hh_add22)
-    # bot.send_message(227722043, hh_add33)
+    testarray = ast.literal_eval(hh_add)
 
 
-
-
-    for cook in hh_add:
+    for cook in testarray:
         driver.add_cookie(cook)
 
+    time.sleep(2)
     driver.refresh()
     time.sleep(1)
 
