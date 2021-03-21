@@ -85,14 +85,14 @@ def wake_up():
     hh_add33 = os.environ.get('hh33')
     # hh1 = hh.copy()
 
+    bot.send_message(227722043, len(hh_add33))
+    bot.send_message(227722043, len(hh_add))
+
     time.sleep(1)
     #
     # bot.send_message(227722043, hh_add22)
     # bot.send_message(227722043, hh_add33)
 
-    for i in hh_add33:
-
-        bot.send_message(227722043, i)
 
 
 
