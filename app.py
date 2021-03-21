@@ -90,11 +90,12 @@ def wake_up():
     tmp.append(hh_add33)
 
     bot.send_message(227722043, tmp)
+    bot.send_message(227722043, type(tmp))
     bot.send_message(227722043, len(hh_add33))
     # bot.send_message(227722043, len(hh_add))
 
-    for i in tmp:
-        bot.send_message(227722043, i)
+    # for i in tmp:
+    #     bot.send_message(227722043, i)
 
     time.sleep(1)
     #
