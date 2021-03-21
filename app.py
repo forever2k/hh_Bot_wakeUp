@@ -88,6 +88,8 @@ def wake_up():
     tmp = []
 
     for i in hh_add33:
+        if i == ' ':
+            pass
         tmp.append(i)
 
     bot.send_message(227722043, tmp)
