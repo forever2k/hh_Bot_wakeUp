@@ -51,6 +51,7 @@ def res(message):
     bot.send_message(message.from_user.id, "RES Bot starts to work")
 
     start_res()
+    wake_up()
 
     schedule.every(250).minutes.do(wake_up)
 
