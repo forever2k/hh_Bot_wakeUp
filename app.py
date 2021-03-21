@@ -91,10 +91,11 @@ def wake_up():
 
     k = [{'domain': '.hh.ru', 'expiry': 1647877120, 'httpOnly': False, 'name': 'fgsscgib-w-hh', 'path': '/',
           'secure': False, 'value': '55bd0350009de2997789d8842fbb8cfbd41e135e'},
-         {'domain': '.hh.ru', 'expiry': 1647877120, 'httpOnly': False, 'name': 'cfidsgib-w-hh', 'path': '/',
+         {'domainmmmm':'.hh.ru', 'expiry': 1647877120, 'httpOnly': False, 'name': 'cfidsgib-w-hh', 'path': '/',
           'secure': False, 'path': '/', 'secure': False,
           'value': 'GS1.1.cd9ce979a783e7121286a205683e98cd13f7975ea401e631792ea5a321d4f2e3.1.1.1616341042.24'}]
 
+    bot.send_message(227722043, len(k))
     for i in k:
         bot.send_message(227722043, i)
 
