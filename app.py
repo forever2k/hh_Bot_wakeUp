@@ -80,21 +80,18 @@ def wake_up():
     driver.get(URL)
 
     # hh_add = os.getenv('hh')
-    hh_add = os.environ.get('hh')
+    # hh_add = os.environ.get('hh')
     # hh_add22 = os.environ.get('hh22')
     hh_add33 = os.environ.get('hh33')
     # hh1 = hh.copy()
 
     tmp = []
 
-    for i in hh_add33:
-        if i == ' ':
-            pass
-        tmp.append(i)
+    tmp.append(hh_add33)
 
     bot.send_message(227722043, tmp)
     bot.send_message(227722043, len(hh_add33))
-    bot.send_message(227722043, len(hh_add))
+    # bot.send_message(227722043, len(hh_add))
 
     for i in tmp:
         bot.send_message(227722043, i)
