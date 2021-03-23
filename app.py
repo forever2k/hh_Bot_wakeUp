@@ -54,11 +54,7 @@ def res(message):
     start_res()
     wake_up()
 
-    schedule.every(250).minutes.do(wake_up)
-
-    while launch:
-        schedule.run_pending()
-        time.sleep(1)
+    bot_schedule()
 
 
 @bot.message_handler(commands=['stop'])
@@ -116,6 +112,16 @@ def wake_up():
     bot.send_message(-1001364950026, driver.current_url)
 
     bot.send_message(227722043, "Function Wake_up finished")
+
+    driver.quit()
+
+
+def bot_schedule():
+    schedule.every(250).minutes.do(wake_up)
+
+    while launch:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 
