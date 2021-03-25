@@ -113,7 +113,7 @@ def wake_up():
 
     bot.send_message(227722043, "Function Wake_up finished")
 
-    driver.quit()
+
 
 
 def bot_schedule():
