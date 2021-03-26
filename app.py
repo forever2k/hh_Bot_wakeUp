@@ -99,7 +99,6 @@ def wake_up():
 
     ob1 = driver.find_elements_by_class_name('bloko-link_dimmed')
 
-    bot.send_message(227722043, "here")
 
     for i in ob1:
         if i.text == 'Поднять в поиске':
@@ -113,7 +112,6 @@ def wake_up():
 
     bot.send_message(227722043, "Function Wake_up finished")
 
-    driver.quit()
 
 
 def bot_schedule():
