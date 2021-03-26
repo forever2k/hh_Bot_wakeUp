@@ -108,8 +108,6 @@ def wake_up():
             except:
                 bot.send_message(-1001364950026, 'Что то не подняли :(')
 
-    bot.send_message(-1001364950026, driver.current_url)
-
     bot.send_message(227722043, "Function Wake_up finished")
 
 
