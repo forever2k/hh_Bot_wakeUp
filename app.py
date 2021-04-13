@@ -27,16 +27,13 @@ chrome_options.add_argument('--disable-dev-sh-usage')
 driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options)
 driver.implicitly_wait(4)
 
-URL = 'https://hh.ru/'
+URL = os.getenv('URL')
 
 launch = True
 
-
-# @bot.message_handler(content_types=['text'])
-# def lalala(message):
-#     bot.send_message(227722043, message)
-#     bot.send_message(227722043, message.message_id)
-#     bot.send_message(227722043, message.chat.id)
+test_group = -1001153348142
+test = -1001364950026
+me = os.getenv('me')
 
 
 
@@ -68,12 +65,13 @@ def stop_res(message):
 def start_res():
 
     global launch
+
     launch = True
 
 
 def wake_up():
 
-    bot.send_message(227722043, "Function Wake_up starts")
+    bot.send_message(me, "Function Wake_up starts")
     driver.get(URL)
 
     hh_add = os.environ.get('hh')
@@ -104,11 +102,11 @@ def wake_up():
         if i.text == 'Поднять в поиске':
             try:
                 i.click()
-                bot.send_message(-1001364950026, 'Подняли! :)')
+                bot.send_message(test_group, 'Подняли! :)')
             except:
-                bot.send_message(-1001364950026, 'Что то не подняли :(')
+                bot.send_message(test_group, 'Что то не подняли :(')
 
-    bot.send_message(227722043, "Function Wake_up finished")
+    bot.send_message(me, "Function Wake_up finished")
 
 
 
